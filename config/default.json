@@ -1,0 +1,13 @@
+{
+  "mysql": {
+    "host": "127.0.0.1",
+    "user": "dbuser",
+    "password": "dbpw",
+    "database": "db",
+    "connectionLimit": 5
+  },
+  "table": {
+    "member": "members"
+  },
+  "salt": "somesalt"
+}
