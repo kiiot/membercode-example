@@ -11,7 +11,7 @@ var db = require('../lib/db');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send(config.get('validator'));
 });
 
 router.post('/', function(req, res, next) {

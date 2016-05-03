@@ -9,5 +9,6 @@
   "table": {
     "member": "members"
   },
-  "salt": "somesalt"
+  "salt": "somesalt",
+  "validator": "VALIDATOR_EXAMPLE"
 }
