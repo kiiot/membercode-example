@@ -4,8 +4,29 @@ var debug = require('debug')('membercode-example:router:code');
 var config = require('config');
 var Q = require('q');
 
-var Hashids = require("hashids");
-var hashids = new Hashids(config.get("salt"));
+//var Hashids = require("hashids");
+//var hashids = new Hashids(config.get("salt"));
+
+function zeroFill( number, width )
+{
+  width -= number.toString().length;
+  if ( width > 0 )
+  {
+    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+  }
+  return number + ""; // always return a string
+}
+
+var codeRule = function(sn) {
+
+  var code = 'B';
+  var time = moment().format('YYMM');
+  sn = ((typeof sn === 'number') ? sn : 0);
+  var serial = zeroFill(sn, 9);
+  var type = '04';
+
+  return code + time + serial + type;
+}
 
 var db = require('../lib/db');
 
@@ -26,7 +47,7 @@ router.post('/', function(req, res, next) {
 
     // If there is no member data,
     // generate the member code and update the database
-    var code = hashids.encode(new Date().getTime());
+    var code = codeRule(new Date().getTime());
 
     return Q.all([
         {code: code, phone: req.body.phone},
