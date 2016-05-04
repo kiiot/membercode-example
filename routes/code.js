@@ -3,6 +3,7 @@ var router = express.Router();
 var debug = require('debug')('membercode-example:router:code');
 var config = require('config');
 var Q = require('q');
+var moment = require('moment');
 
 //var Hashids = require("hashids");
 //var hashids = new Hashids(config.get("salt"));
