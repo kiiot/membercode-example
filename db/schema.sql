@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: member-demo
 -- ------------------------------------------------------
--- Server version 5.5.47-0ubuntu0.14.04.1
+-- Server version	5.5.47-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,20 +19,26 @@
 -- Table structure for table `visitors`
 --
 
-DROP TABLE IF EXISTS `members`;
+DROP TABLE IF EXISTS `visitors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `members` (
+CREATE TABLE `visitors` (
+  `sn` bigint(20) NOT NULL AUTO_INCREMENT,
   `code` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `identityCard` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `salt` varchar(20) DEFAULT NULL,
+  `phoneVerified` tinyint(2) DEFAULT NULL,
+  `emailVerified` tinyint(2) DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`code`),
+  UNIQUE KEY `sn_UNIQUE` (`sn`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   UNIQUE KEY `identityCard_UNIQUE` (`identityCard`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -44,4 +50,4 @@ CREATE TABLE `members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-29  9:03:52
+-- Dump completed on 2016-05-04  2:02:37
